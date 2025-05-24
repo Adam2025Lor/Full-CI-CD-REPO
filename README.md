@@ -1,7 +1,6 @@
 Project 3: Full CI/CD Pipeline with GitHub Actions, Docker & Helm
  
 Process & Steps
-
 Repository Setup:
 Created a new GitHub repository to manage all project code and workflows.
 
