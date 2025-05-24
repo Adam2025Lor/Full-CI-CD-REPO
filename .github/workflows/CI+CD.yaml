@@ -35,6 +35,12 @@ jobs:
         cd foo
         docker build -t flask-nginx-app:${{ github.sha }} .
 
+    - name: List current directory contents
+      run: ls -la
+
+    - name: List foo folder contents
+      run: ls -la foo
+
     - name: Deploy with Helm
       run: |
         cd foo
