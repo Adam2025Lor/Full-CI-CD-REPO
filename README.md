@@ -40,3 +40,11 @@ Docker image is built and tagged with the commit SHA.
 GitHub Action logs in to Docker Hub.
 CD pipeline deploys the Helm chart using helm upgrade --install.
 
+
+
+Git Branching Strategy and Workflow
+To manage version control effectively, I used a simple branching model:
+main branch contains production-ready code.
+Feature branches (Test, Dev) are used for development.
+All feature branches are merged into main via pull requests after successful CI checks. GitHub Actions automatically runs the CI pipeline (tests and linting) on every push to the Main branch or pull requests. 
+Merge conflicts were resolved manually when they occurred.
