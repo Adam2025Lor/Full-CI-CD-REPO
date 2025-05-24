@@ -19,7 +19,7 @@ jobs:
         cd foo
         pip install -r requirements.txt
         pip install pylint
-        pylint app
+        pylint flaskapp.py
 
   deploy:
     needs: lint
