@@ -42,6 +42,5 @@ jobs:
       run: Get-ChildItem foo
 
     - name: Deploy with Helm
-      run: |
-        cd foo
-        helm upgrade --install flask-nginx ./foo --namespace default --set image.repository=flask-nginx-app --set image.tag=${{ github.sha }}
+      run: cd foo; helm upgrade --install flask-nginx . --namespace default --set image.repository=flask-nginx-app --set image.tag=${{ github.sha }}
+        
