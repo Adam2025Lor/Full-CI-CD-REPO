@@ -1,4 +1,6 @@
+"""This is the main Flask app module."""
 from flask import Flask
+
 app = Flask(__name__)
 
 @app.route('/')
