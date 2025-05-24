@@ -36,10 +36,10 @@ jobs:
         docker build -t flask-nginx-app:${{ github.sha }} .
 
     - name: List current directory contents
-      run: ls -la
+      run: Get-ChildItem
 
     - name: List foo folder contents
-      run: ls -la foo
+      run: Get-ChildItem foo
 
     - name: Deploy with Helm
       run: |
