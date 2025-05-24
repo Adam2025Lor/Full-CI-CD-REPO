@@ -29,6 +29,7 @@ jobs:
 
     - name: Build Docker image
       run: |
+        cd foo
         docker build -t flask-nginx-app:${{ github.sha }} .
 
     - name: Deploy with Helm
