@@ -1,0 +1,38 @@
+name: CI + CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - run: |
+        pip install -r requirements.txt
+        pip install pylint
+        pylint app/
+
+  deploy:
+    needs: lint
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: |
+        docker build -t flask-nginx-app:${{ github.sha }} .
+
+    - name: Deploy with Helm
+      run: |
+        helm upgrade --install flask-nginx ./helm-chart \
+          --namespace default \
+          --set image.repository=flask-nginx-app \
+          --set image.tag=${{ github.sha }}
