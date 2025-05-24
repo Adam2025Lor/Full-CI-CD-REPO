@@ -38,4 +38,4 @@ jobs:
     - name: Deploy with Helm
       run: |
         cd foo
-        helm upgrade --install flask-nginx ./helm-chart --namespace default --set image.repository=flask-nginx-app --set image.tag=${{ github.sha }}
+        helm upgrade --install flask-nginx ./foo --namespace default --set image.repository=flask-nginx-app --set image.tag=${{ github.sha }}
